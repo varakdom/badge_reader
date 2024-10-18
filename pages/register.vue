@@ -4,44 +4,47 @@ const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 const errorMsg = ref('');
-
 const { auth } = useSupabaseClient();
 
 const userRegister = async () => {
-  if (password.value !== confirmPassword.value) {
-    errorMsg.value = 'Passwords do not match!';
-    password.value = '';
-    confirmPassword.value = '';
-    setTimeout(() => {
-      errorMsg.value = '';
-    }, 3000);
-    return;
-  }
+    if (password.value !== confirmPassword.value) {
+        errorMsg.value = 'Passwords do not match!';
+        password.value = '';
+        confirmPassword.value = '';
+        setTimeout(() => {
+            errorMsg.value = '';
+        }, 3000);
+        return;
+    }
 
-  try {
-    const { error } = await auth.signUp({
-      email: email.value,
-      password: password.value,
-    });
-    email.value = '';
-    password.value = '';
-    confirmPassword.value = '';
+    try {
+        const { error } = await auth.signUp({
+            email: email.value,
+            password: password.value,
+        });
+        email.value = '';
+        password.value = '';
+        confirmPassword.value = '';
 
-    if (error) throw error;
-  } catch (error) {
-    errorMsg.value = error.message;
-    setTimeout(() => {
-      errorMsg.value = '';
-    }, 3000);
-  }
+        if (error) throw error;
+
+        console.log("User registered:", user.value); // Add this line
+    } catch (error) {
+        errorMsg.value = error.message;
+        setTimeout(() => {
+            errorMsg.value = '';
+        }, 3000);
+    }
 };
 
 watchEffect(() => {
-  if (user.value) {
-    return navigateTo('/');
-  }
+    if (user.value) {
+        console.log("Redirecting to homepage from register"); // Add this line
+        return navigateTo('/');
+    }
 });
 </script>
+
 
 <template>
     <main>
@@ -101,8 +104,8 @@ watchEffect(() => {
             >{{ errorMsg }}</span
           >
           <p class="mt-3 text-xs">Do you have an account yet?</p>
-          <nuxt-link class="w-fit text-sm text-[#aac8e4] hover:text-[#42b883]" to="/login"
-            >Login</nuxt-link
+          <Nuxtlink class="w-fit text-sm text-[#aac8e4] hover:text-[#42b883]" to="/login"
+            >Login</Nuxtlink
           >
         </form>
       </section>

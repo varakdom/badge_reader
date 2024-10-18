@@ -10,4 +10,5 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-10-18',
   ssr: false,
+  components: true,
 });

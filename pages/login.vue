@@ -6,30 +6,32 @@ const errorMsg = ref('');
 const { auth } = useSupabaseClient();
 
 const userLogin = async () => {
-  try {
-    const { error } = await auth.signInWithPassword({
-      email: email.value,
-      password: password.value,
-    });
+    try {
+        const { error } = await auth.signInWithPassword({
+            email: email.value,
+            password: password.value,
+        });
 
-    email.value = '';
-    password.value = '';
+        email.value = '';
+        password.value = '';
 
-    if (error) throw error;
-  } catch (error) {
-    errorMsg.value = error.message;
-    setTimeout(() => {
-      errorMsg.value = '';
-    }, 3000);
-  }
+        if (error) throw error;
+
+        console.log("User logged in:", user.value); // Add this line
+    } catch (error) {
+        errorMsg.value = error.message;
+        setTimeout(() => {
+            errorMsg.value = '';
+        }, 3000);
+    }
 };
 
 watchEffect(() => {
-  if (user.value) {
-    return navigateTo('/');
-  }
+    if (user.value) {
+        console.log("Redirecting to homepage"); // Add this line
+        return navigateTo('/');
+    }
 });
-
 </script>
 
 <template>
@@ -78,11 +80,8 @@ watchEffect(() => {
             >{{ errorMsg }}</span
           >
   
-          <p class="mt-3 text-xs">You don't have an account yet?</p>
-
-          <nuxt-link class="w-fit text-sm text-[#aac8e4] hover:text-[#42b883]" to="/register"
-            >Register</nuxt-link
-          >
+          <p class="mt-3 text-xs">Don't have an account?</p>
+          <Nuxtlink to="/register" class="text-sm text-[#42b883] hover:text-[#aac8e4]">Register here</Nuxtlink>
         </form>
       </section>
     </main>
