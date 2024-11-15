@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware(async (to: RouteLocationNormalizeGeneri
         return navigateTo('/')
     }
 
-    if (!user && to.name !== 'login') {
+    if (!user && to.name !== 'login' && to.name !== 'signup') {
         return navigateTo('/login')
     }
 })

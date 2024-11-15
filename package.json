@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "firebase": "^11.0.2",
+    "mqtt": "^5.10.2",
     "nuxt": "^3.14.159",
     "nuxt-vuefire": "^1.0.4",
     "vue": "latest",
