@@ -3,11 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "nuxt build --legacy-peer-deps",
+    "dev": "nuxt dev --legacy-peer-deps",
+    "generate": "nuxt generate --legacy-peer-deps",
+    "preview": "nuxt preview --legacy-peer-deps",
+    "postinstall": "nuxt prepare --legacy-peer-deps"
   },
   "dependencies": {
     "firebase": "^11.0.2",

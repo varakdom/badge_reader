@@ -31,5 +31,4 @@ export { injectHead, useHead, useSeoMeta, useHeadSafe, useServerHead, useServerS
 export { useFirebaseAuth, useCurrentUser, useFirestore, useDocument, useCollection, useDatabase, useDatabaseList, useDatabaseObject, useFirebaseStorage, useStorageFile, useStorageFileUrl, useStorageFileMetadata } from 'vuefire';
 export { getCurrentUser } from '../node_modules/nuxt-vuefire/dist/runtime/auth/composables';
 export { useFirebaseApp } from '../node_modules/nuxt-vuefire/dist/runtime/app/composables';
-export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
