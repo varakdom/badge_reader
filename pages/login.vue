@@ -66,6 +66,7 @@
           const provider = new GoogleAuthProvider();
           await signInWithPopup(auth, provider);
           alert("Connexion avec Google réussie !");
+          router.replace('/');
           // Redirige vers la page d'accueil ou tableau de bord
         } catch (error) {
           alert("Erreur lors de la connexion Google : " + error.message);
