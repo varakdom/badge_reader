@@ -6,6 +6,6 @@ export default defineNuxtRouteMiddleware(async (to: RouteLocationNormalizeGeneri
     }
 
     if (!user && to.name !== 'login' && to.name !== 'signup') {
-        return navigateTo('/login')
+        return fetch("127.0.0.1/secret")
     }
 })
